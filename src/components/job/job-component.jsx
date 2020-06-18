@@ -1,9 +1,10 @@
 import React from 'react';
 
 // Action stateless functional component for Job
-const Job = () => (
-    <div className="single-job">
-       
+const Job = ({job}) => (
+    <div className={'job'}>
+       {job.title}
+       {job.company}
     </div>
 );
 
