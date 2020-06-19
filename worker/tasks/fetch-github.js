@@ -1,13 +1,18 @@
 const fetch = require('node-fetch');
 
-// JSON data
+// JSON data via url
 const baseURL = 'https://jobs.github.com/positions.json'
 
-module.exports = async function fetchGithub () {
-    const res = await fetch(baseURL);
-    const jobs = await res.json();
-    console.log(jobs.length);
-    console.log({jobs});
+async function fetchGithub () {
+    let resultCount = 1, onPage = 0;
+    const allJobs= [];
+
+    while (resultCount > 0 ) {
+        const res = await fetch(`${baseURL}?page=${onPage}`);
+        const jobs = await res.json();
+        allJobs.push(jobs);
+        onPage++
+    }  
 }
 
-module.exports();
+module.exports = fetchGithub;
