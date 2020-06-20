@@ -4,7 +4,7 @@ const client = redis.createClient();
 
 const { promisify } = require("util");
 // const getAsync = promisify(client.get).bind(client);
-const setAsync = promisify(client.get).bind(client);
+const setAsync = promisify(client.set).bind(client);
 
 // getAsync.then(console.log).catch(console.error);
 
@@ -24,10 +24,10 @@ async function fetchGithub() {
         onPage++
     }  
     console.log('got', allJobs.length, 'Total Jobs!');
-    const success = await setAsync('github', allJobs);
+    const success = await setAsync('github', JSON.stringify(allJobs));
     console.log({success});
 }
-
-fetchGithub();
+// Calling results
+// fetchGithub();
 
 module.exports = fetchGithub;
