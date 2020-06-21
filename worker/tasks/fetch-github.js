@@ -30,20 +30,18 @@ async function fetchGithub() {
         const jobTitle = job.title.toLowerCase();
         let isJunior = true;
 
-
-    // logic
-        if (
-            jobTitle.includes('senior') || 
+        // logic
+        if (jobTitle.includes('senior') || 
             jobTitle.includes('manager') ||
             jobTitle.includes('sr.') ||
-            jobTitle.includes('architect') ||
+            jobTitle.includes('architect')
         ) {
            return false;
         }
         return true;
     })
 
-    
+
 
     
     // set in redis database
