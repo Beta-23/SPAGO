@@ -25,10 +25,11 @@ async function fetchGithub() {
         onPage++;
     };
 
+    console.log('got', allJobs.length, 'Total Jobs!')
+
     // filter related jobs algorithm
     const jrJobs = allJobs.filter(job => {
         const jobTitle = job.title.toLowerCase();
-        let isJunior = true;
 
         // logic
         if (jobTitle.includes('senior') || 
@@ -41,12 +42,10 @@ async function fetchGithub() {
         return true;
     })
 
+    console.log('Data filtered to', jrJobs.length);
 
-
-    
     // set in redis database
-    console.log('got', allJobs.length, 'Total Jobs!');
-    const success = await setAsync('github', JSON.stringify(allJobs));
+    const success = await setAsync('github', JSON.stringify(jrJobs));
     console.log({success});
 };
 
