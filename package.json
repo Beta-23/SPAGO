@@ -12,6 +12,7 @@
     "lodash": "^4.17.19",
     "moment-timezone": "^0.5.31",
     "node-fetch": "^2.6.1",
+    "node-forge": "^0.10.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
